@@ -1,0 +1,3 @@
+condition,path,boxplot color,dot color
+insertions,data/plot_neighbors_outputs/insertions,#fc030b,#700101
+WT,data/plot_neighbors_outputs/WT,#0303fc,#017070
