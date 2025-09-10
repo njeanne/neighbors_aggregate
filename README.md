@@ -58,35 +58,35 @@ The script outputs are:
 |ins1  |insertions|Metal Binding Domain nsP2                                       |17     |8         |
 |ins1  |insertions|Putative Capping Pore nsP1                                      |54     |29        |
 |ins1  |insertions|Macro Domain nsP3                                               |72     |30        |
-|ins1  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |ins1  |insertions|RdRp nsP5                                                       |0      |0         |
-|ins1  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
 |ins1  |insertions|Helicase nsP4                                                   |0      |0         |
+|ins1  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
 |ins1  |insertions|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|0      |0         |
+|ins1  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |ins2  |insertions|RdRp nsP5                                                       |91     |45        |
 |ins2  |insertions|Putative Capping Pore nsP1                                      |51     |28        |
 |ins2  |insertions|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|4      |1         |
 |ins2  |insertions|Macro Domain nsP3                                               |11     |5         |
 |ins2  |insertions|Metal Binding Domain nsP2                                       |1      |1         |
-|ins2  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
-|ins2  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
 |ins2  |insertions|Helicase nsP4                                                   |0      |0         |
+|ins2  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
+|ins2  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |ins3  |insertions|Metal Binding Domain nsP2                                       |34     |14        |
 |ins3  |insertions|Putative Capping Pore nsP1                                      |84     |52        |
 |ins3  |insertions|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|15     |11        |
 |ins3  |insertions|Macro Domain nsP3                                               |37     |15        |
-|ins3  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |ins3  |insertions|RdRp nsP5                                                       |0      |0         |
-|ins3  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
 |ins3  |insertions|Helicase nsP4                                                   |0      |0         |
+|ins3  |insertions|between Metal Binding Domain nsP2 and HVR                       |0      |0         |
+|ins3  |insertions|between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |wt1   |WT        |Metal Binding Domain nsP2                                       |92     |36        |
 |wt1   |WT        |Macro Domain nsP3                                               |34     |17        |
-|wt1   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |wt1   |WT        |RdRp nsP5                                                       |0      |0         |
+|wt1   |WT        |Helicase nsP4                                                   |0      |0         |
 |wt1   |WT        |Putative Capping Pore nsP1                                      |0      |0         |
 |wt1   |WT        |between Metal Binding Domain nsP2 and HVR                       |0      |0         |
-|wt1   |WT        |Helicase nsP4                                                   |0      |0         |
 |wt1   |WT        |between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|0      |0         |
+|wt1   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |wt2   |WT        |Macro Domain nsP3                                               |39     |19        |
 |wt2   |WT        |Putative Capping Pore nsP1                                      |23     |12        |
 |wt2   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |3      |3         |
@@ -101,10 +101,19 @@ The script outputs are:
 |wt3   |WT        |Macro Domain nsP3                                               |45     |16        |
 |wt3   |WT        |Helicase nsP4                                                   |5      |3         |
 |wt3   |WT        |RdRp nsP5                                                       |3      |3         |
-|wt3   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 |wt3   |WT        |between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|0      |0         |
+|wt3   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
+|wt4   |WT        |RdRp nsP5                                                       |26     |15        |
+|wt4   |WT        |Metal Binding Domain nsP2                                       |2      |1         |
+|wt4   |WT        |Macro Domain nsP3                                               |44     |27        |
+|wt4   |WT        |Putative Capping Pore nsP1                                      |26     |14        |
+|wt4   |WT        |Helicase nsP4                                                   |0      |0         |
+|wt4   |WT        |between Metal Binding Domain nsP2 and HVR                       |0      |0         |
+|wt4   |WT        |between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|0      |0         |
+|wt4   |WT        |between Macro Domain nsP3 and Helicase nsP4                     |0      |0         |
 
-- boxplots of the contacts by conditions and domains at the atom and at the residue levels. Mann-Whitney tests with **two-sided as the null hypothesis** are performed for each domain between each pair of conditions.
+
+- boxplots of the contacts by conditions and domains at the atom and at the residue levels. Mann-Whitney tests with **first condition greater than the second as null hypothesis (`greater`)** are performed for each domain between each pair of conditions.
 Only the significant p-values are annotated:
 ```shell
 p-value annotation legend:
@@ -125,36 +134,28 @@ At the residue level:
 
 At the atom level:
 
-|contact with                                                    |group 1   |group 2|p-value            |statistic|test          |H0                           |comment|
-|----------------------------------------------------------------|----------|-------|-------------------|---------|--------------|-----------------------------|-------|
-|Putative Capping Pore nsP1                                      |insertions|WT     |0.04042779918502612|9.0      |Mann-Whitney U|insertions is greater than WT|       |
-|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|insertions|WT     |0.09835280122947343|7.5      |Mann-Whitney U|insertions is greater than WT|       |
-|Metal Binding Domain nsP2                                       |insertions|WT     |0.904784868087238  |2.0      |Mann-Whitney U|insertions is greater than WT|       |
-|between Metal Binding Domain nsP2 and HVR                       |insertions|WT     |0.9087887802741321 |3.0      |Mann-Whitney U|insertions is greater than WT|       |
-|Macro Domain nsP3                                               |insertions|WT     |0.6687397082299713 |4.0      |Mann-Whitney U|insertions is greater than WT|       |
-|between Macro Domain nsP3 and Helicase nsP4                     |insertions|WT     |0.9087887802741321 |3.0      |Mann-Whitney U|insertions is greater than WT|       |
-|Helicase nsP4                                                   |insertions|WT     |0.9646494275670086 |1.5      |Mann-Whitney U|insertions is greater than WT|       |
-|RdRp nsP5                                                       |insertions|WT     |0.5                |5.0      |Mann-Whitney U|insertions is greater than WT|       |
+|contact with                                                    |group 1   |group 2|p-value             |statistic|test          |H0                           |comment|
+|----------------------------------------------------------------|----------|-------|--------------------|---------|--------------|-----------------------------|-------|
+|Putative Capping Pore nsP1                                      |insertions|WT     |0.02857142857142857 |12.0     |Mann-Whitney U|insertions is greater than WT|       |
+|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|insertions|WT     |0.061372341162960455|10.0     |Mann-Whitney U|insertions is greater than WT|       |
+|Metal Binding Domain nsP2                                       |insertions|WT     |0.8                 |4.0      |Mann-Whitney U|insertions is greater than WT|       |
+|between Metal Binding Domain nsP2 and HVR                       |insertions|WT     |0.8758934605050381  |4.5      |Mann-Whitney U|insertions is greater than WT|       |
+|Macro Domain nsP3                                               |insertions|WT     |0.6857142857142857  |5.0      |Mann-Whitney U|insertions is greater than WT|       |
+|between Macro Domain nsP3 and Helicase nsP4                     |insertions|WT     |0.8758934605050381  |4.5      |Mann-Whitney U|insertions is greater than WT|       |
+|Helicase nsP4                                                   |insertions|WT     |0.9386276588370396  |3.0      |Mann-Whitney U|insertions is greater than WT|       |
+|RdRp nsP5                                                       |insertions|WT     |0.5773220698201049  |6.0      |Mann-Whitney U|insertions is greater than WT|       |
 
 
 At the residue level:
 
-|contact with                                                    |group 1   |group 2|p-value            |statistic|test          |H0                           |comment|
-|----------------------------------------------------------------|----------|-------|-------------------|---------|--------------|-----------------------------|-------|
-|Putative Capping Pore nsP1                                      |insertions|WT     |0.04042779918502612|9.0      |Mann-Whitney U|insertions is greater than WT|       |
-|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|insertions|WT     |0.09835280122947343|7.5      |Mann-Whitney U|insertions is greater than WT|       |
-|Metal Binding Domain nsP2                                       |insertions|WT     |0.8658570581614413 |2.5      |Mann-Whitney U|insertions is greater than WT|       |
-|between Metal Binding Domain nsP2 and HVR                       |insertions|WT     |0.9087887802741321 |3.0      |Mann-Whitney U|insertions is greater than WT|       |
-|Macro Domain nsP3                                               |insertions|WT     |0.8086334555573871 |3.0      |Mann-Whitney U|insertions is greater than WT|       |
-|between Macro Domain nsP3 and Helicase nsP4                     |insertions|WT     |0.9087887802741321 |3.0      |Mann-Whitney U|insertions is greater than WT|       |
-|Helicase nsP4                                                   |insertions|WT     |0.9646494275670086 |1.5      |Mann-Whitney U|insertions is greater than WT|       |
-|RdRp nsP5                                                       |insertions|WT     |0.5                |5.0      |Mann-Whitney U|insertions is greater than WT|       |
+|contact with                                                    |group 1   |group 2|p-value             |statistic|test          |H0                           |comment|
+|----------------------------------------------------------------|----------|-------|--------------------|---------|--------------|-----------------------------|-------|
+|Putative Capping Pore nsP1                                      |insertions|WT     |0.02857142857142857 |12.0     |Mann-Whitney U|insertions is greater than WT|       |
+|between Putative Capping Pore nsP1 and Metal Binding Domain nsP2|insertions|WT     |0.061372341162960455|10.0     |Mann-Whitney U|insertions is greater than WT|       |
+|Metal Binding Domain nsP2                                       |insertions|WT     |0.7089601740352489  |5.0      |Mann-Whitney U|insertions is greater than WT|       |
+|between Metal Binding Domain nsP2 and HVR                       |insertions|WT     |0.8758934605050381  |4.5      |Mann-Whitney U|insertions is greater than WT|       |
+|Macro Domain nsP3                                               |insertions|WT     |0.8                 |4.0      |Mann-Whitney U|insertions is greater than WT|       |
+|between Macro Domain nsP3 and Helicase nsP4                     |insertions|WT     |0.8758934605050381  |4.5      |Mann-Whitney U|insertions is greater than WT|       |
+|Helicase nsP4                                                   |insertions|WT     |0.9386276588370396  |3.0      |Mann-Whitney U|insertions is greater than WT|       |
+|RdRp nsP5                                                       |insertions|WT     |0.5773220698201049  |6.0      |Mann-Whitney U|insertions is greater than WT|       |
 
-
-## Vigilance on outputs
-
-The statistical results may vary between the boxplots significance p-values and the CSV p-values
-because the null hypothesis is different:
-
-- boxplots H0: the two populations are different.
-- CSV statistics file: the contacts' count the group 1 distribution is greater than the one of the group 2. 

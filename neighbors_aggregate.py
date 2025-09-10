@@ -292,7 +292,7 @@ def compute_stats(src, domains, out_dir, roi, md_time, level_of_interaction):
     :param level_of_interaction: the level of interaction 'by atom' or 'by residue'
     :type level_of_interaction: str
     """
-    level_of_interaction_txt = level_of_interaction.split(' ')[1]
+    level_of_interaction_txt = level_of_interaction.split(" ")[1]
     logging.info(f"At the {level_of_interaction_txt} level:")
     logging.info("\tComputing Mann-Whitney U test with a null hypothesis group 1 is greater than group 2:")
     data = {"contact with": [], "group 1": [], "group 2": [], "p-value": [], "statistic": [], "test":[], "H0": [],
@@ -365,7 +365,7 @@ def all_values_equals_correction(df, pairs_list, level):
     return df
 
 
-def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, subtitle, level_of_interaction):
+def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, subtitle_arg, level_of_interaction):
     """
     Create a boxplot by conditions.
 
@@ -383,8 +383,8 @@ def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, s
     :type fmt: str
     :param domains: the updated and ordered list of domains.
     :type domains: list
-    :param subtitle: the subtitle of the plot.
-    :type subtitle: str
+    :param subtitle_arg: the subtitle of the plot.
+    :type subtitle_arg: str
     :param level_of_interaction: the level of interaction 'by atom' or 'by residue'
     :type level_of_interaction: str
     """
@@ -417,7 +417,8 @@ def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, s
         # annotate with the statistical test
         annotator = Annotator(ax, boxplot_pairs, **plotting_parameters)
         annotator.configure(test="Mann-Whitney", text_format="star", hide_non_significant=True)
-        annotator.apply_and_annotate()
+        annotator.apply_test(alternative="greater")
+        annotator.annotate()
 
         # add separators between conditions
         [ax.axvline(x + 0.5, alpha=0.2) for x in ax.get_xticks()]
@@ -441,10 +442,9 @@ def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, s
         plt.suptitle(f"Neighbors {level_of_interaction.split(' ')[1]}s contacts by domain with the {roi} at {md_time} "
                      f"ns of molecular dynamics", fontsize="large",
                      fontweight="bold")
-        if subtitle:
-            subtitle = f"{subtitle}, Mann-Withney test with H0: two-sided"
-        else:
-            subtitle = "Mann-Withney test with H0: two-sided"
+        subtitle = "Mann-Withney H0: first condition greater than the second."
+        if subtitle_arg:
+            subtitle = f"{subtitle_arg}, {subtitle}"
         plt.title(subtitle)
         plt.xlabel("Domains", fontweight="bold")
         plt.ylabel(f"Number of contacts", fontweight="bold")
