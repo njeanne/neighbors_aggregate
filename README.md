@@ -42,7 +42,7 @@ The command to use the 3 conditions of the input CSV file is:
 conda activate contacts_aggregate
 
 ./neighbors_aggregate.py --md-time 1002 --region-of-interest DOM1 --domain data/sample_domains.csv \
---subtitle "Subtitle example" --out results data/conditions.csv
+--subtitle "Test data" --out results data/conditions.csv
 
 conda deactivate
 ```

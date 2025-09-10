@@ -388,7 +388,8 @@ def boxplot_aggregated(src, roi, colors_plot, md_time, dir_path, fmt, domains, s
     :param level_of_interaction: the level of interaction 'by atom' or 'by residue'
     :type level_of_interaction: str
     """
-    logging.info("\tPlotting the aggregated contacts by condition and Mann-Whitney two-sided test:")
+    logging.info(f"\tPlotting the aggregated neighborhood contacts at the {level_of_interaction.split(' ')[1]}s level "
+                 f"by condition:")
     plt.figure(figsize=(15, 15))
     # create the statistical pairs annotations
     boxplot_pairs = []
